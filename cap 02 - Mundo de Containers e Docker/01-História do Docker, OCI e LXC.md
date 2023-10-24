@@ -16,7 +16,9 @@ Já em 2016 com maior popularização de containers, a Docker decidiu quebrar se
 ![Ecossistema do containerd 1](https://containerd.io/img/architecture.png)
 ![Ecossistema do containerd 2](https://www.docker.com/wp-content/uploads/974cd631-b57e-470e-a944-78530aaa1a23-1.jpg)
 
-Daí surgiu o containerd-shim, que é um daemon que gerencia containers em execução no host, sem a necessidade de fazer syscalls. Ele é responsável por iniciar e parar containers, além de gerenciar imagens e volumes.
+Daí surgiu o containerd-shim, é um componente mais específico e serve como um intermediário entre o tempo de execução de containers (como o containerd) e o daemon do Docker (ou outra ferramenta de gerenciamento de containers). Ele atua como um "shim" (ou "ponte") para permitir que o daemon do Docker interaja com o tempo de execução, oferecendo funcionalidades adicionais, como captura de logs, monitoramento de ciclo de vida, etc. Ele executa o OCI Runtime, como o runc, para criar e gerenciar containers. 
+
+A diferença entre o containerd e o containerd-shim é que o primeiro está num nível mais elevado e o segundo num nível mais baixo.
 
 Fontes: 
 
