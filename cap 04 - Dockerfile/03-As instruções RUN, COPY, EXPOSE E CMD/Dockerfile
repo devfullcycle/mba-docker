@@ -13,3 +13,5 @@ RUN npm install
 EXPOSE 80
 
 CMD [ "/bin/sh", "-c", "node /usr/src/app/index.js & nginx -g 'daemon off;'" ]
+
+#ENTRYPOINT [ "/bin/sh", "-c", "node /usr/src/app/index.js & nginx -g 'daemon off;'" ]
