@@ -4,13 +4,20 @@ services:
   app:
     build: .
     restart: always
-    ports:
-      - 8080:3000
+    # ports:
+    #   - 8080:3000
     deploy:
       resources:
         limits:
           cpus: "0.1"
           memory: 50M
+  
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 8080:80
   
   db:
     image: mysql:8.0.30-debian
