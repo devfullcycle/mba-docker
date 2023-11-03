@@ -1,11 +1,10 @@
-version: '3'
+version: "3"
 
 services:
   # localhost:3000
   app:
     build: .
     restart: always
-    network_mode: host
     depends_on:
       db:
         condition: service_healthy
@@ -14,21 +13,11 @@ services:
         limits:
           cpus: "0.1"
           memory: 50M
-  
-  # localhost
-  nginx:
-    build:
-      context: .
-      dockerfile: Dockerfile.nginx
-    network_mode: host
-    depends_on:
-      - app
-  
+
   # localhost:3306
   db:
     image: mysql:8.0.30-debian
     command: --default-authentication-plugin=mysql_native_password
-    network_mode: host
     environment:
       - MYSQL_ROOT_PASSWORD=root
     healthcheck:
@@ -42,4 +31,3 @@ services:
         limits:
           cpus: "0.3"
           memory: 1G
-      

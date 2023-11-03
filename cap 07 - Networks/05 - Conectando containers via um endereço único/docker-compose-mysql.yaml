@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:8.0.30-debian
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 1G
