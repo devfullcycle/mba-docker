@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0.30-debian
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - my-volume:/var/lib/mysql
+  
+  nginx:
+    image: nginx:1.19.10-alpine
+    volumes:
+      - my-volume-nginx:/usr/share/nginx/html
+
+volumes:
+  my-volume:
+    external: true
+  my-volume-nginx:
+    external: true
