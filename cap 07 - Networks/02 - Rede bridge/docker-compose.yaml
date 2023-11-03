@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    # ports:
+    #   - 8080:3000
+    deploy:
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 50M
+    # networks:
+    #   - my-network
+  
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 8080:80
+    depends_on:
+      - app
+    # networks:
+    #   - my-network
+  
+  db:
+    image: mysql:8.0.30-debian
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 1m30s
+      timeout: 10s
+      start_period: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: 1G
+    # networks:
+    #   - my-network
+      
+
+# networks:
+#   my-network:
+#     external: true
