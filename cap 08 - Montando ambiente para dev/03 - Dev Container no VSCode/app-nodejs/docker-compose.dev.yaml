@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  app:
+    build: 
+      context: ./project
+    ports:
+      - 3000:3000
+    volumes:
+      - ./project:/home/node/app:cached
+  
+  db:
+    image: mysql:8.0.30-debian
+    environment:
+      - MYSQL_DATABASE=nest
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./.docker/dbdata:/var/lib/mysql:delegated
+    security_opt:
+      - seccomp:unconfined
