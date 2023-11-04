@@ -1,0 +1,15 @@
+{
+  "name": "python",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prod": "mix --production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "laravel-mix": "^6.0.49"
+  }
+}

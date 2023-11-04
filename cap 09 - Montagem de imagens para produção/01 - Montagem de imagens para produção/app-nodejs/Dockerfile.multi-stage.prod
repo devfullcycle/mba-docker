@@ -1,0 +1,60 @@
+FROM node:20-slim as builder
+
+RUN apt update -y && \
+    apt install --no-install-recommends -y \
+    openssl && \
+    rm -rf /var/lib/apt/lists/*
+
+USER node
+
+RUN mkdir -p /home/node/app
+
+WORKDIR /home/node/app
+
+COPY --chown=node:node package*.json ./
+
+RUN npm ci
+
+COPY --chown=node:node . .
+
+RUN npm run build
+
+FROM node:20-slim as production
+
+LABEL maintainer="Luiz Carlos"
+LABEL email="argentinaluiz@gmail.com"
+LABEL version="1.0.0"
+
+ENV NODE_ENV production
+
+RUN apt update -y && \
+    apt install --no-install-recommends -y \
+    openssl && \
+    rm -rf /var/lib/apt/lists/*
+
+USER node
+
+RUN mkdir -p /home/node/app
+
+WORKDIR /home/node/app
+
+COPY --chown=node:node package*.json ./
+
+RUN npm ci --only=production && npm cache clean --force
+
+COPY --from=builder --chown=node:node /home/node/app/dist ./dist
+
+EXPOSE 3000
+
+CMD [ "npm", "run", "start:prod" ]
+
+FROM gcr.io/distroless/nodejs20-debian12:nonroot
+
+COPY --from=production --chown=nonroot:nonroot /home/node/app/dist /app/dist
+COPY --from=production --chown=nonroot:nonroot /home/node/app/node_modules /app/node_modules
+
+WORKDIR /app
+
+EXPOSE 3000
+
+CMD ["dist/main.js" ]

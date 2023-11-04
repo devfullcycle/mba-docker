@@ -1,0 +1,5 @@
+.git/
+.venv/
+node_modules/
+Dockerfile
+docker-compose.yaml

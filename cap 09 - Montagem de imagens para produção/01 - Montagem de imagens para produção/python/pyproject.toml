@@ -1,0 +1,12 @@
+[project]
+name = "python_project"
+version = "1.0.0"
+description = ""
+dependencies = [
+    "django>=4.2.7",
+    "gunicorn>=21.2.0",
+]
+requires-python = ">=3.9"
+readme = "README.md"
+license = {text = "MIT"}
+
