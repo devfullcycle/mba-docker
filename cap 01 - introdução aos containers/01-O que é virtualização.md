@@ -2,7 +2,7 @@
 
 A virtualização surgiu na década de 60, com o objetivo de compartilhar recursos de hardware entre vários usuários. A ideia era que cada usuário tivesse a sensação de que o hardware era dedicado para ele, mas na verdade, o hardware era compartilhado entre vários usuários.
 
-A virtualização de hardware é feita através de um software chamado de hypervisor, que é responsável por criar e gerenciar as máquinas virtuais. O hypervisor é instalado diretamente no hardware e é responsável por criar e gerenciar as máquinas virtuais.
+A virtualização de hardware é feita através de um software chamado de hypervisor, que é responsável por criar e gerenciar as máquinas virtuais.
 
 Existem dois tipos de hypervisor:
 - Tipo 1: O hypervisor é instalado diretamente no hardware e é responsável por criar e gerenciar as máquinas virtuais.
