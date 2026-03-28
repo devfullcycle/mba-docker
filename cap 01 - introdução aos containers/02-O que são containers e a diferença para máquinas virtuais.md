@@ -3,11 +3,11 @@
 
 ## Containers vs Máquinas virtuais
 
-![Imagens vs Containers](https://www.sdxcentral.com/wp-content/uploads/2019/05/ContainersvsVMs_Image.jpg)
+![Imagens vs Containers](./img/containers-x-vms.png)
 
 ## Vantagens e desvantagens de usar máquinas virtuais
 
-Máquina virtuais são muito úteis, pois conseguem rodar outros sistemas operacionais até de outras arquiteturas dentro de um sistema operacional, isto representa uma vantagem enorme, pois permite que um único servidor seja dividido em vários servidores virtuais, o que reduz o custo de aquisição de hardware.
+Máquinas virtuais são muito úteis, pois conseguem rodar outros sistemas operacionais até de outras arquiteturas dentro de um sistema operacional, isto representa uma vantagem enorme, pois permite que um único servidor seja dividido em vários servidores virtuais, o que reduz o custo de aquisição de hardware.
 
 Entretanto, máquinas virtuais possuem algumas desvantagens:
 
@@ -39,7 +39,7 @@ Containers não podem rodar outros sistemas operacionais, eles precisam rodar o 
 
 ## Exemplo de chroot
 
-![Montagem do chroot](https://securityqueens.co.uk/wp-content/uploads/2020/04/Chroot-1.png)
+![Montagem do chroot](./img/Chroot-1.png)
 
 ## Os anos 2000 e o nascer dos containers
 
